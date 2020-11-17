@@ -6,7 +6,7 @@ layout: true
 
 class: center, middle
 
-# {title}
+# Go Fundamentals
 
 Gaurav Agarwal
 
@@ -44,7 +44,7 @@ func main() {
 class: center, middle
 
 Code
-https://github.com/algogrit/presentation-template
+https://github.com/algogrit/presentation-go-fundamentals
 
 Slides
-https://template.slides.algogrit.com
+https://go-fundamentals.slides.algogrit.com
