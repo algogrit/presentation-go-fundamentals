@@ -296,6 +296,10 @@ class: center, middle
 
 ---
 
+*Go's declaration [syntax](https://blog.golang.org/declaration-syntax)*
+
+---
+
 ### [Slices](https://blog.golang.org/slices-intro)
 
 - `var <name> []int`
