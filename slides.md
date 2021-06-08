@@ -888,30 +888,6 @@ All you need to do, in order for standard library to work with such an implement
 ---
 class: center, middle
 
-### Type Assertion
-
----
-class: center, middle
-
-Allows you to get to the underlying concrete type stored in an interface variable
-
----
-
-- With a `var` of interface type, you can print the underlying type info using `%T` formatter
-
-- You can also get the underlying type variable using:
-  - `i.(<underlying-type>)`
-
----
-
-#### Type Switches
-
-- You can have `switch v := i.(type) {`
-  - where each case is for a specific type. Eg. `case int: `
-
----
-class: center, middle
-
 ## Inheritance
 
 ---
@@ -962,6 +938,30 @@ class: center, middle
 class: center, middle
 
 An interface can compose another interface
+
+---
+class: center, middle
+
+### Type Assertion
+
+---
+class: center, middle
+
+Allows you to get to the underlying concrete type stored in an interface variable
+
+---
+
+- With a `var` of interface type, you can print the underlying type info using `%T` formatter
+
+- You can also get the underlying type variable using:
+  - `i.(<underlying-type>)`
+
+---
+
+#### Type Switches
+
+- You can have `switch v := i.(type) {`
+  - where each case is for a specific type. Eg. `case int: `
 
 ---
 class: center, middle
