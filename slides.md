@@ -767,14 +767,28 @@ There are tons of interfaces defined in the standard library. Some of them below
 
 `fmt`
 
-- `Stringer`
+- [`Stringer`](https://golang.org/pkg/fmt/#Stringer)
 
 ---
 
 `io`
 
-- `Reader`
-- `Writer`
+- [`Reader`](https://golang.org/pkg/io/#Reader)
+
+- [`Writer`](https://golang.org/pkg/io/#Writer)
+
+---
+
+Types implementing `io.Reader` or `io.Writer`:
+
+- [*os.File](https://golang.org/pkg/os/#File)
+- [*http.Response](https://golang.org/pkg/net/http/#Response)
+
+Funcs requiring or returning types implementing `io.Reader` or `io.Writer`:
+
+- [fmt.Print<>](https://golang.org/pkg/fmt/)
+- [fmt.Scan<>](https://golang.org/pkg/fmt/)
+- [encoding.<>](https://golang.org/pkg/encoding/)
 
 ---
 class: center, middle
@@ -798,7 +812,7 @@ Most of the funcs in the standard library return 2 values. One is the expected v
 
 ---
 
-`error` is an interface defined in the `builtin` package
+[`error`](https://golang.org/pkg/builtin/#error) is an interface defined in the `builtin` package
 
 ```golang
 type error interface {
