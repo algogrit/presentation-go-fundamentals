@@ -390,39 +390,6 @@ Oops! We haven't talked about interfaces yet!
 ---
 class: center, middle
 
-## Functions
-
----
-
-- Multiple Returns
-
-- Named return values
-
-- Variadic functions `...`
-
----
-class: center, middle
-
-### Functional Programming in Go
-
----
-
-- Can be anonymous
-  - `func (<argName> <type>) ({<rVarName>} <type>) {`
-
-- First-class citizens
-  - Can be passed around or assigned to variables
-
-- closures
-  - can capture variables from outer scope
-
----
-
-- zero value of function variable?
-
----
-class: center, middle
-
 > What happens to variables when we pass them to functions?
 
 ---
@@ -468,6 +435,39 @@ class: center, middle
   *`unsafe` is beyond the scope of what we will cover*
 
 - `unsafe` is used heavily internally
+
+---
+class: center, middle
+
+## Functions
+
+---
+
+- Multiple Returns
+
+- Named return values
+
+- Variadic functions `...`
+
+---
+class: center, middle
+
+### Functional Programming in Go
+
+---
+
+- Can be anonymous
+  - `func (<argName> <type>) ({<rVarName>} <type>) {`
+
+- First-class citizens
+  - Can be passed around or assigned to variables
+
+- closures
+  - can capture variables from outer scope
+
+---
+
+- zero value of function variable?
 
 ---
 
