@@ -420,11 +420,18 @@ class: center, middle
 
 - Print address using `%p` formatter
 
+---
+
 - `*` is used for dereferencing as well as defining a var as pointer
 
 - `&` is used to get the address/reference of a variable
 
 - `new` builtin function can initialize memory for any type
+
+---
+class: center, middle
+
+### Strange behavior of DS
 
 ---
 
@@ -468,6 +475,138 @@ class: center, middle
 ---
 
 - zero value of function variable?
+
+---
+class: center, middle
+
+# Defer
+
+---
+class: center, middle
+
+Go's defer statement schedules a function call (the deferred function) to be run immediately before the function executing the defer returns.
+
+---
+
+- `defer` keyword
+
+- `defer <funcCall>`
+
+- stacked execution - [FILO](https://tour.golang.org/flowcontrol/13)
+
+- Clean up with defer
+
+---
+
+- Args will be evaluated before deferring
+
+- defer executes even in case of panic
+
+---
+class: center, middle
+
+## Receiver Functions
+
+---
+class: center, middle
+
+Go doesn't support function overloading!
+
+---
+class: center, middle
+
+### Methods
+
+- Methods are known as receivers or receiver functions in Go
+
+---
+
+- Receivers can be defined on any user-defined type in Go
+
+- You can define multiple receivers with same name but on different receiver types, within a package
+
+- They need to be defined in the same package as the `type` is defined in
+
+- Getters & Setters are anti-patterns in Go
+
+---
+
+### Two kinds of receiver functions
+
+- Value Receivers
+- Pointer Receivers
+
+---
+
+#### Value receivers
+
+- `func (<varName> <receiverType>) <funcNameA>() { ... }`
+  - Eg. `func (f MyFloat) Abs() float64 { ... }`
+
+---
+class: center, middle
+
+There is no `this` or `self` keyword in go, which could give you a hold of the variable on which you are dispatching a receiver.
+
+---
+class: center, middle
+
+They are instead passed in to the receiver, the same way you have arguments to a function.
+
+---
+
+#### Pointer receivers
+
+- `func (<varName> *<receiverType>) <funcNameB>() { ... }`
+  - Eg. `func (v *Vertex) Scale() float64 { ... }`
+
+---
+
+Pointer receivers can help in:
+
+- Avoiding copy of a large-ish struct variable
+
+- Update fields of a struct variable
+
+- Useful for dispatching even on `nil` values
+
+---
+class: center, middle
+
+Same as fields, don't need any dereferencing to invoke
+
+---
+class: center, middle
+
+### Value & Pointer types
+
+---
+
+The value & pointer receivers can be dispatched interchangeably:
+
+- `var v <receiverType>`
+  - `v.funcNameA()` & `v.funcNameB()`
+
+- `p := &v`
+  - `p.funcNameA()` & `p.funcNameB()`
+
+---
+
+value receiver: `(v Vertex) Abs`
+
+pointer receiver: `(v *Vertex) Scale`
+
+value: `var vertex Vertex`
+
+pointer: `var p *Vertex`
+
+```golang
+vertex.Abs()
+vertex.Scale()
+
+p.Abs()
+p.Scale()
+```
 
 ---
 
