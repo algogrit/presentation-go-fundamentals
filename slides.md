@@ -888,6 +888,62 @@ class: center, middle
 An interface can compose another interface
 
 ---
+class: center, middle
+
+## Testing
+
+---
+class: center, middle
+
+Go comes with testing and benchmarking support in the standard library
+
+---
+class: center, middle
+
+Write test cases in the same directory as source code
+
+---
+class: center, middle
+
+Test cases for `hello.go` will be in `hello_test.go`
+
+---
+
+- `import "testing"`
+- `go test`
+  - `<file>_test.go`
+  - `func Test<>(t *testing.T)`
+    - `t.Fail`
+    - `t.FailNow`
+    - `t.Fatal`
+    - `t.Skip`
+
+---
+class: center, middle
+
+## Working with third-party packages
+
+---
+class: center, middle
+
+`go get`
+
+---
+class: center, middle
+
+### Dependency management: `go mod`
+
+---
+
+- `go mod`
+  - `go mod init`
+  - `go mod tidy`
+  - `go mod why`
+  - `go mod graph`
+  - `go mod download`
+- `go list -m all`
+
+---
 
 class: center, middle
 
