@@ -935,14 +935,16 @@ class: center, middle
 
 ---
 
-- `go mod`
-  - `go mod init <module-name>`
-  - `go mod tidy`
-  - `go mod why`
-  - `go mod graph`
-  - `go mod download`
+`go mod help`
+
+- `go mod init <module-name>`
+- `go mod tidy`
+- `go mod why`
+- `go mod graph`
+- `go mod download`
 
 ---
+class: center, middle
 
 `go list -m all`
 
