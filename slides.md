@@ -609,6 +609,285 @@ p.Scale()
 ```
 
 ---
+class: center, middle
+
+## Interfaces
+
+---
+class: center, middle
+
+Interfaces are implicit in Go!
+
+---
+
+- `interface` keyword
+
+- `type Foo interface { ... }`
+
+- It contains only method definitions
+
+---
+
+### Rules
+
+1. If any type implements all of the methods required by the interface, only then it implicitly implements the interface
+
+2. if a value type implements an interface, then the pointer to the value type also implements the interface
+
+3. If any of the receiver methods, required by interface `I` on type `A` are pointer receiver, then only `*A` will be implementing an interface
+
+---
+
+```go
+type I interface {
+  Foo()
+  Bar()
+}
+
+type A struct{}
+
+func (a *A) Foo() {}
+
+func (a A) Bar() {}
+```
+
+then,
+
+```go
+var i I
+
+// i = A{} // Will result in compiler error
+
+i = &A{}
+```
+
+---
+class: center, middle
+
+Zero value of `i`?
+
+---
+class: center, middle
+
+Interfaces are a combination of concrete type info and value
+
+---
+
+```go
+var a *A
+var i I = a
+
+if i == nil {
+  // Will this execute?
+}
+```
+
+---
+class: center, middle
+
+Interfaces can also be "empty"!
+
+---
+
+There are tons of interfaces defined in the standard library. Some of them below:
+
+- `fmt.Stringer`
+
+- [`io.Reader`](https://golang.org/pkg/io/#Reader)
+
+- [`io.Writer`](https://golang.org/pkg/io/#Writer)
+
+- `json.Marshaler`
+
+- `error`
+
+---
+
+`fmt`
+
+- `Stringer`
+
+---
+
+`io`
+
+- `Reader`
+- `Writer`
+
+---
+class: center, middle
+
+Use case: writing to a file
+
+---
+class: center, middle
+
+## `error`
+
+---
+class: center, middle
+
+Errors are values in Go!
+
+---
+class: center, middle
+
+Most of the funcs in the standard library return 2 values. One is the expected value of expected type, the other is `error`.
+
+---
+
+`error` is an interface defined in the `builtin` package
+
+```golang
+type error interface {
+  Error() string
+}
+```
+
+---
+class: center, middle
+
+Any type which has a `Error() string` receiver, implements it
+
+---
+
+Standard library has some concrete implementations of `error` interface. Like:
+
+- `*fs.PathError`
+- `*strconv.NumError`
+
+---
+class: center, middle
+
+package [`errors`](https://golang.org/pkg/errors/)
+
+---
+class: center, middle
+
+`errors.New(<messageString>)` makes it easy to create errors on the fly
+
+---
+class: center, middle
+
+### Russian doll of errors
+
+---
+
+With Go 1.13, you can define custom errors which wrap other errors like a Matryoshka...
+
+![Matryoshka](assets/images/matryoshka.jpg)
+
+---
+
+`errors` package has 2 new methods:
+
+- `As`
+- `Is`
+
+---
+class: center, middle
+
+`Is`
+
+---
+class: center, middle
+
+reports whether any error in err's chain matches target
+
+---
+class: center, middle
+
+`As`
+
+---
+class: center, middle
+
+finds the first error in err's chain that matches target
+
+---
+class: center, middle
+
+All you need to do, in order for standard library to work with such an implementation of `error` is to implement `Unwrap() error` method on your custom error type.
+
+---
+class: center, middle
+
+### Type Assertion
+
+---
+class: center, middle
+
+Allows you to get to the underlying concrete type stored in an interface variable
+
+---
+
+- With a `var` of interface type, you can print the underlying type info using `%T` formatter
+
+- You can also get the underlying type variable using:
+  - `i.(<underlying-type>)`
+
+---
+
+#### Type Switches
+
+- You can have `switch v := i.(type) {`
+  - where each case is for a specific type. Eg. `case int: `
+
+---
+class: center, middle
+
+## Inheritance
+
+---
+class: center, middle
+
+Contrary to popular belief, go has inheritance through composition!
+
+---
+class: center, middle
+
+### Struct "inheritance"
+
+---
+class: center, middle
+
+A struct type can compose or "embed" another type
+
+---
+
+```go
+type Bar string
+
+func (b Bar) bar() {}
+
+type Foo struct {
+  Bar
+  // Bar Bar
+}
+```
+
+---
+
+- Here the custom type `Foo` "inherits" Bar's bar method
+
+- If a struct composes a struct, it can also "inherit" Fields
+
+---
+class: center, middle
+
+Multiple inheritance is possible and easy to deal with
+
+---
+class: center, middle
+
+### Interface "inheritance"
+
+---
+class: center, middle
+
+An interface can compose another interface
+
+---
 
 class: center, middle
 
