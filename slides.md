@@ -936,7 +936,7 @@ class: center, middle
 ---
 
 - `go mod`
-  - `go mod init`
+  - `go mod init <module-name>`
   - `go mod tidy`
   - `go mod why`
   - `go mod graph`
