@@ -941,7 +941,10 @@ class: center, middle
   - `go mod why`
   - `go mod graph`
   - `go mod download`
-- `go list -m all`
+
+---
+
+`go list -m all`
 
 ---
 
