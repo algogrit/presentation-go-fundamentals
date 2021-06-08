@@ -16,6 +16,48 @@ class: center, middle
 Go is a compiled language. Every program needs to be compiled before it can be run!
 
 ---
+
+## Overview of Go scheduler
+
+- OS threads are kernel-space threads
+
+- goroutines are user-space threads, lighter than OS threads
+
+- Go's scheduler is responsible for mapping goroutines on to OS threads
+
+- For `m` running goroutines, the scheduler maps them to `n` threads
+
+---
+
+- The scheduler maintains a run queue for each thread
+
+- Threads can steal work from other threads when their run queue is empty
+
+- `GOMAXPROCS` controls the max number of OS threads a go program can create
+
+- Goroutines don't run to completion,
+
+  - They are pre-emptively scheduled
+
+  - And they can be context switched when blocked
+
+---
+
+### OS vs Go Scheduler
+
+![OS vs Go Scheduler](assets/images/go-vs-os-scheduler.png)
+
+.image-credits[https://speakerdeck.com/kavya719/the-scheduler-saga?slide=15]
+
+---
+
+### OS Thread & Go Routine Scheduling
+
+![Goroutine vs OS Thread](assets/images/os-thread-goroutine.png)
+
+.image-credits[https://speakerdeck.com/kavya719/the-scheduler-saga?slide=18]
+
+---
 class: center, middle
 
 ## Looking at `scratchpad.go`
@@ -429,11 +471,6 @@ class: center, middle
 - `new` builtin function can initialize memory for any type
 
 ---
-class: center, middle
-
-### Strange behavior of DS
-
----
 
 - No pointer arithmetic
 
@@ -442,6 +479,23 @@ class: center, middle
   *`unsafe` is beyond the scope of what we will cover*
 
 - `unsafe` is used heavily internally
+
+---
+class: center, middle
+
+### Pointers to structs
+
+---
+class: center, middle
+
+### Strange behavior of DS on passing
+
+---
+
+- Go is pass by value always!
+
+- Some DS are pointers under the hood
+  - Eg: [`slice`](https://github.com/golang/go/blob/master/src/runtime/slice.go)
 
 ---
 class: center, middle
@@ -462,6 +516,11 @@ class: center, middle
 ### Functional Programming in Go
 
 ---
+class: center, middle
+
+#### Stack vs Heap
+
+---
 
 - Can be anonymous
   - `func (<argName> <type>) ({<rVarName>} <type>) {`
@@ -479,7 +538,7 @@ class: center, middle
 ---
 class: center, middle
 
-# Defer
+## Defer
 
 ---
 class: center, middle
@@ -517,7 +576,10 @@ class: center, middle
 
 ### Methods
 
-- Methods are known as receivers or receiver functions in Go
+---
+class: center, middle
+
+Methods are known as receivers or receiver functions in Go
 
 ---
 
@@ -691,7 +753,7 @@ Interfaces can also be "empty"!
 
 There are tons of interfaces defined in the standard library. Some of them below:
 
-- `fmt.Stringer`
+- [`fmt.Stringer`](https://golang.org/pkg/fmt/#Stringer)
 
 - [`io.Reader`](https://golang.org/pkg/io/#Reader)
 
@@ -947,6 +1009,163 @@ class: center, middle
 class: center, middle
 
 `go list -m all`
+
+---
+class: center, middle
+
+## Concurrency in Go
+
+---
+
+### Goroutines
+
+- `go` keyword
+
+- M:N scheduler
+
+---
+
+### `sync` package
+
+- `sync.WaitGroup`
+- `sync.Mutex`
+  - `sync.RWMutex`
+
+---
+class: center, middle
+
+`sync.WaitGroup`
+
+---
+class: center, middle
+
+Useful to synchronize multiple goroutines
+
+---
+class: center, middle
+
+`sync.Mutex` or `sync.RWMutex`
+
+---
+class: center, middle
+
+Used to control access to shared data across multiple goroutines
+
+---
+class: center, middle
+
+Race conditions can be detected at runtime using `-race` flag
+
+---
+class: center, middle
+
+### Channels
+
+---
+
+Two types:
+
+- Buffered `make(chan <type>, <n>)`
+- Unbuffered `make(chan <type>)`
+
+---
+
+Two common operations on channels:
+
+- "Send" to a channel : `ch <- <val>`
+- "Receive" from a channel: `<val> = <-ch`
+
+---
+
+`<-ch`; Receiving from a channel
+
+- blocks if there is nothing to receive
+
+---
+
+`ch <-`; Sending to a channel
+
+- blocks if the buffer is full! (Buffered channel)
+
+- blocks until there is a receive! (Unbuffered channel)
+
+---
+
+`range`
+
+- Loops for next value received from channel
+
+- Blocks until the channel is closed
+
+---
+
+`close`
+
+- receive from closed channel: no blocking; returns zero-value, flag
+
+- send to a closed channel: panic
+
+---
+
+`cap`
+
+- Gets the capacity of a channel
+
+---
+class: center, middle
+
+### `select`
+
+---
+
+- The select statement lets a goroutine wait on multiple communication operations.
+
+- A select blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready.
+
+- The default case in a select is run if no other case is ready.
+
+---
+class: center, middle
+
+### Other Packages
+
+---
+class: center, middle
+
+#### `context` Package
+
+---
+
+- Useful for signaling multiple goroutines at the same time
+
+- Useful for controlling goroutine execution
+
+- Useful for sharing values across goroutine boundaries
+
+---
+class: center, middle
+
+## `net/http` package
+
+---
+
+- Supports both `http` & `https`
+
+- Also has support for certificate management
+
+- Simple and powerful
+
+---
+
+- `http.ListenAndServe(<address>, <router>)`
+
+- `r.Handle(<route>, <router>)`
+
+- `r.HandleFunc(<route>, <handlerFunc>)`
+
+---
+
+### Introducing `gorilla/mux`
 
 ---
 
