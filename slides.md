@@ -620,7 +620,7 @@ They are instead passed in to the receiver, the same way you have arguments to a
 #### Pointer receivers
 
 - `func (<varName> *<receiverType>) <funcNameB>() { ... }`
-  - Eg. `func (v *Vertex) Scale() float64 { ... }`
+  - Eg. `func (v *Vertex) Scale(by float64) { ... }`
 
 ---
 
