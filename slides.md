@@ -825,6 +825,7 @@ class: center, middle
 ### panic & recover (defer)
 
 ---
+class: center, middle
 
 ### `error`
 
