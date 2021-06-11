@@ -747,6 +747,25 @@ if i == nil {
 ---
 class: center, middle
 
+### Type Assertion
+
+---
+class: center, middle
+
+Allows you to get to the underlying concrete type stored in an interface variable
+
+---
+
+- With a `var` of interface type, you can print the underlying type info using `%T` formatter
+
+- You can also get the underlying type variable using:
+  - `i.(<underlying-type>)`
+
+- Has a magic 2nd returned value
+
+---
+class: center, middle
+
 Interfaces can also be "empty"!
 
 ---
@@ -1010,27 +1029,8 @@ class: center, middle
 An interface can compose another interface
 
 ---
-class: center, middle
 
-### Type Assertion
-
----
-class: center, middle
-
-Allows you to get to the underlying concrete type stored in an interface variable
-
----
-
-- With a `var` of interface type, you can print the underlying type info using `%T` formatter
-
-- You can also get the underlying type variable using:
-  - `i.(<underlying-type>)`
-
-- Has a magic 2nd returned value
-
----
-
-#### Type Switches
+### Type Switches
 
 - You can have `switch v := i.(type) {`
   - where each case is for a specific type. Eg. `case int: `
