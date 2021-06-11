@@ -516,11 +516,6 @@ class: center, middle
 ### Functional Programming in Go
 
 ---
-class: center, middle
-
-#### Stack vs Heap
-
----
 
 - Can be anonymous
   - `func (<argName> <type>) ({<rVarName>} <type>) {`
@@ -530,6 +525,11 @@ class: center, middle
 
 - closures
   - can capture variables from outer scope
+
+---
+class: center, middle
+
+#### Stack vs Heap
 
 ---
 
