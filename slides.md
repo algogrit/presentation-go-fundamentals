@@ -538,7 +538,7 @@ class: center, middle
 ---
 class: center, middle
 
-## Defer
+### Defer
 
 ---
 class: center, middle
@@ -798,7 +798,16 @@ Use case: writing to a file
 ---
 class: center, middle
 
-## `error`
+## What to do when something does wrong?
+
+---
+class: center, middle
+
+### panic & recover (defer)
+
+---
+
+### `error`
 
 ---
 class: center, middle
@@ -888,6 +897,67 @@ All you need to do, in order for standard library to work with such an implement
 ---
 class: center, middle
 
+## Testing
+
+---
+class: center, middle
+
+Go comes with testing and benchmarking support in the standard library
+
+---
+class: center, middle
+
+Write test cases in the same directory as source code
+
+---
+class: center, middle
+
+Test cases for `hello.go` will be in `hello_test.go`
+
+---
+
+- `import "testing"`
+- `go test`
+  - `<file>_test.go`
+  - `func Test<>(t *testing.T)`
+    - `t.Fail`
+    - `t.FailNow`
+    - `t.Fatal`
+    - `t.Skip`
+
+---
+class: center, middle
+
+## Working with third-party packages
+
+---
+class: center, middle
+
+`go get`
+
+---
+class: center, middle
+
+### Dependency management: `go mod`
+
+---
+
+`go mod help`
+
+- `go mod init <module-name>`
+- `go mod tidy`
+- `go mod why`
+- `go mod graph`
+- `go mod download`
+
+---
+class: center, middle
+
+`go list -m all`
+
+---
+class: center, middle
+
 ## Inheritance
 
 ---
@@ -956,73 +1026,14 @@ Allows you to get to the underlying concrete type stored in an interface variabl
 - You can also get the underlying type variable using:
   - `i.(<underlying-type>)`
 
+- Has a magic 2nd returned value
+
 ---
 
 #### Type Switches
 
 - You can have `switch v := i.(type) {`
   - where each case is for a specific type. Eg. `case int: `
-
----
-class: center, middle
-
-## Testing
-
----
-class: center, middle
-
-Go comes with testing and benchmarking support in the standard library
-
----
-class: center, middle
-
-Write test cases in the same directory as source code
-
----
-class: center, middle
-
-Test cases for `hello.go` will be in `hello_test.go`
-
----
-
-- `import "testing"`
-- `go test`
-  - `<file>_test.go`
-  - `func Test<>(t *testing.T)`
-    - `t.Fail`
-    - `t.FailNow`
-    - `t.Fatal`
-    - `t.Skip`
-
----
-class: center, middle
-
-## Working with third-party packages
-
----
-class: center, middle
-
-`go get`
-
----
-class: center, middle
-
-### Dependency management: `go mod`
-
----
-
-`go mod help`
-
-- `go mod init <module-name>`
-- `go mod tidy`
-- `go mod why`
-- `go mod graph`
-- `go mod download`
-
----
-class: center, middle
-
-`go list -m all`
 
 ---
 class: center, middle
