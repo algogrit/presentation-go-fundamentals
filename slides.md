@@ -1140,6 +1140,13 @@ Two common operations on channels:
 ---
 class: center, middle
 
+> Do not communicate by sharing memory; instead, share memory by communicating.
+
+.content-credits[https://golang.org/doc/effective_go#sharing]
+
+---
+class: center, middle
+
 ### `select`
 
 ---
