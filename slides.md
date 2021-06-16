@@ -821,7 +821,7 @@ Use case: writing to a file
 ---
 class: center, middle
 
-## What to do when something does wrong?
+## What to do when something goes wrong?
 
 ---
 class: center, middle
