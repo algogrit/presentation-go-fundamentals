@@ -1201,6 +1201,7 @@ class: center, middle
 - `r.HandleFunc(<route>, <handlerFunc>)`
 
 ---
+class: center, middle
 
 ### Introducing `gorilla/mux`
 
