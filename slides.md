@@ -562,10 +562,6 @@ class: center, middle
 - zero value of function variable?
 
 ---
-
-### `panic` & `recover`
-
----
 class: center, middle
 
 ## Receiver Functions
