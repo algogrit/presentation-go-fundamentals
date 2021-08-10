@@ -764,11 +764,6 @@ Allows you to get to the underlying concrete type stored in an interface variabl
 - Has a magic 2nd returned value
 
 ---
-class: center, middle
-
-Interfaces can also be "empty"!
-
----
 
 There are tons of interfaces defined in the standard library. Some of them below:
 
@@ -974,6 +969,11 @@ class: center, middle
 class: center, middle
 
 `go list -m all`
+
+---
+class: center, middle
+
+Interfaces can also be "empty"!
 
 ---
 class: center, middle
