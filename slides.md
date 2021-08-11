@@ -1147,6 +1147,11 @@ class: center, middle
 ---
 class: center, middle
 
+### Timers
+
+---
+class: center, middle
+
 ### `select`
 
 ---
