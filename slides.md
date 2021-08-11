@@ -812,6 +812,11 @@ Use case: writing to a file
 ---
 class: center, middle
 
+Interfaces can also be "empty"!
+
+---
+class: center, middle
+
 ## What to do when something goes wrong?
 
 ---
@@ -969,11 +974,6 @@ class: center, middle
 class: center, middle
 
 `go list -m all`
-
----
-class: center, middle
-
-Interfaces can also be "empty"!
 
 ---
 class: center, middle
