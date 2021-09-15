@@ -106,48 +106,6 @@ class: center, middle
 ---
 class: center, middle
 
-## Import & Exports
-
----
-
-### Packages
-
-- Every `.go` file starts with `package <name>`
-
-- All `.go` files in a directory need to belong to the same package
-
-- Every package needs to be in a directory of the same name
-
-  - Except `main` package
-
-- `func main` can only be defined in a `main` package
-
----
-
-### Imports
-
-Import path is always relative to `$GOPATH/src`
-
----
-class: center, middle
-
-> *unless you are using `go mod`*
-
----
-
-### Exports
-
-- Works using the first character -> uppercase means exported
-
-### More info
-
-```bash
-go help importpath
-```
-
----
-class: center, middle
-
 ## Types
 
 ---
@@ -320,6 +278,48 @@ class: center, middle
 
 - For maps *we will take a look at DS next*
   - `for <key>, <value> := range <map-type> {`
+
+---
+class: center, middle
+
+## Import & Exports
+
+---
+
+### Packages
+
+- Every `.go` file starts with `package <name>`
+
+- All `.go` files in a directory need to belong to the same package
+
+- Every package needs to be in a directory of the same name
+
+  - Except `main` package
+
+- `func main` can only be defined in a `main` package
+
+---
+
+### Imports
+
+Import path is always relative to `$GOPATH/src`
+
+---
+class: center, middle
+
+> *unless you are using `go mod`*
+
+---
+
+### Exports
+
+- Works using the first character -> uppercase means exported
+
+### More info
+
+```bash
+go help importpath
+```
 
 ---
 class: center, middle
