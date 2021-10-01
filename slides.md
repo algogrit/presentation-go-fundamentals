@@ -427,6 +427,13 @@ class: center, middle
 ---
 class: center, middle
 
+### Strings
+
+as `[]byte` or `[]rune`
+
+---
+class: center, middle
+
 Oops! We haven't talked about interfaces yet!
 
 ---
