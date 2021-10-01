@@ -427,14 +427,14 @@ class: center, middle
 ---
 class: center, middle
 
-### Strings
-
-as `[]byte` or `[]rune`
+Oops! We haven't talked about interfaces yet!
 
 ---
 class: center, middle
 
-Oops! We haven't talked about interfaces yet!
+### Strings
+
+as `[]byte` or `[]rune`
 
 ---
 class: center, middle
