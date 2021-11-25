@@ -420,7 +420,7 @@ class: center, middle
 
 ### Custom
 
-- [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md) are coming in Go 2!
+- [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md) are coming in Go ~~2~~ 1.18!
 
 - Till then rely on `interface{}` or implement a DS for specific types
 
