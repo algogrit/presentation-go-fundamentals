@@ -290,19 +290,23 @@ class: center, middle
 
 - Every `.go` file starts with `package <name>`
 
+- `func main` can only be defined in a `main` package
+
 - All `.go` files in a directory need to belong to the same package
 
-- Every package needs to be in a directory of the same name
+- Every package needs to be in a directory of the same name (*)
 
   - Except `main` package
 
-- `func main` can only be defined in a `main` package
+`*: More of a thumb rule`
 
 ---
 
 ### Imports
 
-Import path is always relative to `$GOPATH/src`
+Import path is always relative to `$GOPATH/src`[1]
+
+*1: True for versions of Go <1.13*
 
 ---
 class: center, middle
@@ -310,16 +314,11 @@ class: center, middle
 > *unless you are using `go mod`*
 
 ---
+class: center, middle
 
 ### Exports
 
-- Works using the first character -> uppercase means exported
-
-### More info
-
-```bash
-go help importpath
-```
+Works using the first character -> *U*ppercase means exported
 
 ---
 class: center, middle
@@ -337,6 +336,7 @@ class: center, middle
 - zero values?
 
 ---
+class: center, middle
 
 *Go's declaration [syntax](https://blog.golang.org/declaration-syntax)*
 
@@ -447,14 +447,9 @@ class: center, middle
 ## Pass by value
 
 ---
+class: center, middle
 
-- Go is pass by value always!
-
-- A few types have pointer fields under the hood
-  - Eg.
-    - `slices`
-    - `maps`
-    - `channels`
+Go is pass by value always!
 
 ---
 class: center, middle
@@ -501,8 +496,11 @@ class: center, middle
 
 - Go is pass by value always!
 
-- Some DS are pointers under the hood
-  - Eg: [`slice`](https://github.com/golang/go/blob/master/src/runtime/slice.go)
+- A few types have pointer fields under the hood
+  - Eg.
+    - [`slice`](https://github.com/golang/go/blob/master/src/runtime/slice.go)
+    - `maps`
+    - `channels`
 
 ---
 class: center, middle
@@ -535,13 +533,13 @@ Go's defer statement schedules a function call (the deferred function) to be run
 
 - stacked execution - [FILO](https://tour.golang.org/flowcontrol/13)
 
-- Clean up with defer
+- defer executes even in case of panic
 
 ---
 
 - Args will be evaluated before deferring
 
-- defer executes even in case of panic
+- Clean up with defer
 
 ---
 class: center, middle
@@ -603,6 +601,7 @@ Methods are known as receivers or receiver functions in Go
 ### Two kinds of receiver functions
 
 - Value Receivers
+
 - Pointer Receivers
 
 ---
@@ -610,6 +609,7 @@ Methods are known as receivers or receiver functions in Go
 #### Value receivers
 
 - `func (<varName> <receiverType>) <funcNameA>() { ... }`
+
   - Eg. `func (f MyFloat) Abs() float64 { ... }`
 
 ---
@@ -627,6 +627,7 @@ They are instead passed in to the receiver, the same way you have arguments to a
 #### Pointer receivers
 
 - `func (<varName> *<receiverType>) <funcNameB>() { ... }`
+
   - Eg. `func (v *Vertex) Scale(by float64) { ... }`
 
 ---
@@ -654,9 +655,11 @@ class: center, middle
 The value & pointer receivers can be dispatched interchangeably:
 
 - `var v <receiverType>`
+
   - `v.funcNameA()` & `v.funcNameB()`
 
 - `p := &v`
+
   - `p.funcNameA()` & `p.funcNameB()`
 
 ---
@@ -766,6 +769,7 @@ Allows you to get to the underlying concrete type stored in an interface variabl
 - With a `var` of interface type, you can print the underlying type info using `%T` formatter
 
 - You can also get the underlying type variable using:
+
   - `i.(<underlying-type>)`
 
 - Has a magic 2nd returned value
@@ -803,12 +807,15 @@ There are tons of interfaces defined in the standard library. Some of them below
 Types implementing `io.Reader` or `io.Writer`:
 
 - [*os.File](https://golang.org/pkg/os/#File)
+
 - [*http.Response](https://golang.org/pkg/net/http/#Response)
 
 Funcs requiring or returning types implementing `io.Reader` or `io.Writer`:
 
-- [fmt.Print<>](https://golang.org/pkg/fmt/)
-- [fmt.Scan<>](https://golang.org/pkg/fmt/)
+- [fmt.Fprint<>](https://golang.org/pkg/fmt/)
+
+- [fmt.Fscan<>](https://golang.org/pkg/fmt/)
+
 - [encoding.<>](https://golang.org/pkg/encoding/)
 
 ---
@@ -866,6 +873,7 @@ Any type which has a `Error() string` receiver, implements it
 Standard library has some concrete implementations of `error` interface. Like:
 
 - `*fs.PathError`
+
 - `*strconv.NumError`
 
 ---
@@ -894,6 +902,7 @@ With Go 1.13, you can define custom errors which wrap other errors like a Matryo
 `errors` package has 2 new methods:
 
 - `As`
+
 - `Is`
 
 ---
@@ -972,15 +981,25 @@ class: center, middle
 `go mod help`
 
 - `go mod init <module-name>`
+
 - `go mod tidy`
+
 - `go mod why`
+
 - `go mod graph`
+
 - `go mod download`
 
 ---
 class: center, middle
 
 `go list -m all`
+
+---
+
+### More info
+
+- `go help importpath`
 
 ---
 class: center, middle
