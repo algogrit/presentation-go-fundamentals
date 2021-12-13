@@ -116,7 +116,7 @@ Go is a statically typed, type inferred language!
 ---
 class: center, middle
 
-i.e.) You don't have to write a type of a variable explicitly, the compile will infer it. But all types must be known/inferred at compile time.
+i.e.) You don't have to write a type of a variable explicitly, the compiler will infer it. But all types must be known/inferred at compile time.
 
 ---
 
@@ -192,7 +192,12 @@ class: center, middle
 ---
 
 - Specialized type conversion
+
   - `strconv`
+
+  - `math`
+
+  - ...
 
 ---
 class: center, middle
@@ -304,9 +309,9 @@ class: center, middle
 
 ### Imports
 
-Import path is always relative to `$GOPATH/src`[1]
+Import path is always relative to `$GOPATH/src` (*)
 
-*1: True for versions of Go <1.13*
+`*: True only for Go versions <1.13`
 
 ---
 class: center, middle
@@ -497,9 +502,13 @@ class: center, middle
 - Go is pass by value always!
 
 - A few types have pointer fields under the hood
+
   - Eg.
+
     - [`slice`](https://github.com/golang/go/blob/master/src/runtime/slice.go)
-    - `maps`
+
+    - `map`
+
     - `channels`
 
 ---
@@ -634,9 +643,9 @@ They are instead passed in to the receiver, the same way you have arguments to a
 
 Pointer receivers can help in:
 
-- Avoiding copy of a large-ish struct variable
+- Avoiding copy of a large-ish User-defined type variable
 
-- Update fields of a struct variable
+- Update fields of a User-defined type variable
 
 - Useful for dispatching even on `nil` values
 
@@ -668,13 +677,13 @@ value receiver: `(v Vertex) Abs`
 
 pointer receiver: `(v *Vertex) Scale`
 
-value: `var vertex Vertex`
+value: `var v Vertex`
 
 pointer: `var p *Vertex`
 
 ```golang
-vertex.Abs()
-vertex.Scale()
+v.Abs()
+v.Scale()
 
 p.Abs()
 p.Scale()
@@ -1080,7 +1089,9 @@ class: center, middle
 ### `sync` package
 
 - `sync.WaitGroup`
+
 - `sync.Mutex`
+
   - `sync.RWMutex`
 
 ---
@@ -1118,6 +1129,7 @@ class: center, middle
 Two types:
 
 - Buffered `make(chan <type>, <n>)`
+
 - Unbuffered `make(chan <type>)`
 
 ---
@@ -1125,6 +1137,7 @@ Two types:
 Two common operations on channels:
 
 - "Send" to a channel : `ch <- <val>`
+
 - "Receive" from a channel: `<val> = <-ch`
 
 ---
@@ -1147,7 +1160,7 @@ Two common operations on channels:
 
 - Loops for next value received from channel
 
-- Blocks until the channel is closed
+- Terminates the loop if it detects that the channel is closed
 
 ---
 
@@ -1191,7 +1204,7 @@ class: center, middle
 ---
 class: center, middle
 
-### Other Packages
+### Other Packages for use with Concurrency
 
 ---
 class: center, middle
@@ -1209,7 +1222,14 @@ class: center, middle
 ---
 class: center, middle
 
-## `net/http` package
+## Writing http applications
+
+---
+class: center, middle
+
+### `net/http` package
+
+.content-credits[https://go-web-apps.slides.algogrit.com/]
 
 ---
 
