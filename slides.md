@@ -1096,6 +1096,16 @@ class: center, middle
 ---
 class: center, middle
 
+`|` operator
+
+---
+class: center, middle
+
+`~` operator for approximation
+
+---
+class: center, middle
+
 ## Concurrency in Go
 
 ---
