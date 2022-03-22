@@ -427,7 +427,7 @@ class: center, middle
 
 - [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md) are here in Go ~~2~~ 1.18!
 
-- ~~`interface{}`~~ `any`
+- ~~interface{}~~ `any`
 
 - implement a DS for specific types
 
