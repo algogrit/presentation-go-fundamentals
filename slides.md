@@ -446,11 +446,6 @@ as `[]byte` or `[]rune`
 ---
 class: center, middle
 
-> What happens to variables when we pass them to functions?
-
----
-class: center, middle
-
 ## Generics
 
 ---
@@ -462,6 +457,11 @@ class: center, middle
 class: center, middle
 
 `any`
+
+---
+class: center, middle
+
+> What happens to variables when we pass them to functions?
 
 ---
 class: center, middle
