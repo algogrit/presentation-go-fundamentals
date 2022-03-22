@@ -1091,7 +1091,7 @@ An interface can compose another interface
 ---
 class: center, middle
 
-### Type constraints - *Introduced in ***Go 1.18**
+### Type constraints - *Introduced in* **Go 1.18**
 
 ---
 class: center, middle
