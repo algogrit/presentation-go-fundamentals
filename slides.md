@@ -427,7 +427,7 @@ class: center, middle
 
 - [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md) are here in Go ~~2~~ 1.18!
 
-- ~~`interface{}`~~
+- ~~`interface{}`~~ `any`
 
 - implement a DS for specific types
 
@@ -447,6 +447,21 @@ as `[]byte` or `[]rune`
 class: center, middle
 
 > What happens to variables when we pass them to functions?
+
+---
+class: center, middle
+
+## Generics
+
+---
+class: center, middle
+
+`comparable`, `==`
+
+---
+class: center, middle
+
+`any`
 
 ---
 class: center, middle
@@ -1076,6 +1091,11 @@ An interface can compose another interface
 ---
 class: center, middle
 
+### Type constraints - *Introduced in ***Go 1.18**
+
+---
+class: center, middle
+
 ## Concurrency in Go
 
 ---
@@ -1253,11 +1273,6 @@ class: center, middle
 class: center, middle
 
 ### Introducing `gorilla/mux`
-
----
-class: center, middle
-
-## Generics
 
 ---
 
