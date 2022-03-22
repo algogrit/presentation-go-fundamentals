@@ -425,14 +425,16 @@ class: center, middle
 
 ### Custom
 
-- [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md) are coming in Go ~~2~~ 1.18!
+- [generics](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md) are here in Go ~~2~~ 1.18!
 
-- Till then rely on `interface{}` or implement a DS for specific types
+- ~~`interface{}`~~
+
+- implement a DS for specific types
 
 ---
 class: center, middle
 
-Oops! We haven't talked about interfaces yet!
+Oops! We haven't talked about interfaces/generics yet!
 
 ---
 class: center, middle
@@ -1251,6 +1253,11 @@ class: center, middle
 class: center, middle
 
 ### Introducing `gorilla/mux`
+
+---
+class: center, middle
+
+## Generics
 
 ---
 
