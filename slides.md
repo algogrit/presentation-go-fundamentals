@@ -370,6 +370,13 @@ class: center, middle
 - zero value of slices?
 
 ---
+class: center, middle
+
+### Strings
+
+as `[]byte` or `[]rune`
+
+---
 
 ### Intro to structs
 
@@ -435,13 +442,6 @@ class: center, middle
 class: center, middle
 
 Oops! We haven't talked about interfaces/generics yet!
-
----
-class: center, middle
-
-### Strings
-
-as `[]byte` or `[]rune`
 
 ---
 class: center, middle
