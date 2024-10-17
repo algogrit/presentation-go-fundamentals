@@ -524,7 +524,7 @@ class: center, middle
 
     - [`slice`](https://github.com/golang/go/blob/master/src/runtime/slice.go)
 
-    - `map`
+    - [`map`](https://github.com/golang/go/blob/master/src/runtime/map_noswiss.go#L114)
 
     - `channels`
 
